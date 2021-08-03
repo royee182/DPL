@@ -49,7 +49,7 @@ The folder should be structured as:
 ## Evaluation
 
 
-Download pre-trained models from Pretrained_Resnet_GTA5 [[Google_Drive](https://drive.google.com/file/d/1fSr-Ijs5vG7DuksUWBdBWUCDTbNkIhHO/view?usp=sharing), [BaiduYun]()] and save the unzipped models in `./DPL_master/DPL_pretrained`, download translated target images from DPI2I_City2GTA_Resnet [[Google_Drive](https://drive.google.com/file/d/1rnO3OJGpW_m7GahxnqFPNbbVEFYFI_b5/view?usp=sharing), [BaiduYun]()] and save the unzipped images in `./DPL_master/DPI2I_images/DPI2I_City2GTA_Resnet/val`. Then you can evaluate DPL and DPL-Dual as following:
+Download pre-trained models from Pretrained_Resnet_GTA5 [[Google_Drive](https://drive.google.com/file/d/1fSr-Ijs5vG7DuksUWBdBWUCDTbNkIhHO/view?usp=sharing), [BaiduYun](https://pan.baidu.com/s/1bWGHDqnTZ21aYdgTOSCu3g)(Code:t7t8)] and save the unzipped models in `./DPL_master/DPL_pretrained`, download translated target images from DPI2I_City2GTA_Resnet [[Google_Drive](https://drive.google.com/file/d/1rnO3OJGpW_m7GahxnqFPNbbVEFYFI_b5/view?usp=sharing), [BaiduYun](https://pan.baidu.com/s/15SVGHz-dWDboXszwBGZRxg)(Code:cf5a)] and save the unzipped images in `./DPL_master/DPI2I_images/DPI2I_City2GTA_Resnet/val`. Then you can evaluate DPL and DPL-Dual as following:
 - Evaluation of DPL
     ```
     cd DPL_master
@@ -62,16 +62,16 @@ Download pre-trained models from Pretrained_Resnet_GTA5 [[Google_Drive](https://
 
 More pretrained models and translated target images on other settings can be downloaded from:
 
-- GTA5->Cityscapes, FCN-8s with VGG16: GTA5_VGG_chpt [[Google_Drive](https://drive.google.com/file/d/1LVnJEE9uHCwSiymD8YWEPybfCKCAKTJr/view?usp=sharing), [BaiduYun]()]
-- SYNTHIA->Cityscapes, DeepLab-V2 with ResNet-101: SYN_Resnet_chpt [[Google_Drive](https://drive.google.com/file/d/1YMkUAQSAZyUHP1J8jpN12pMShHByP6bk/view?usp=sharing), [BaiduYun]()]
-- SYNTHIA->Cityscapes, FCN-8s with VGG16: SYN_VGG_chpt [[Google_Drive](https://drive.google.com/file/d/1_f4bCMdbVzIXqFSjV7sT_hiPQHGY-Kgx/view?usp=sharing), [BaiduYun]()]
+- GTA5->Cityscapes, FCN-8s with VGG16: GTA5_VGG_chpt [[Google_Drive](https://drive.google.com/file/d/1LVnJEE9uHCwSiymD8YWEPybfCKCAKTJr/view?usp=sharing), [BaiduYun](https://pan.baidu.com/s/18ONFBKH1t0pdCG_sueXvLQ)(Code:fanp)]
+- SYNTHIA->Cityscapes, DeepLab-V2 with ResNet-101: SYN_Resnet_chpt [[Google_Drive](https://drive.google.com/file/d/1YMkUAQSAZyUHP1J8jpN12pMShHByP6bk/view?usp=sharing), [BaiduYun](https://pan.baidu.com/s/1c48K9Ta8-ya_gchoKo1tVw)(Code:drvo)]
+- SYNTHIA->Cityscapes, FCN-8s with VGG16: SYN_VGG_chpt [[Google_Drive](https://drive.google.com/file/d/1_f4bCMdbVzIXqFSjV7sT_hiPQHGY-Kgx/view?usp=sharing), [BaiduYun](https://pan.baidu.com/s/1MR9FhbsX6VEf2BMOp_khFQ)(Code:9vio)]
 
 ## Training
 The training process of DPL consists of two phases: single-path warm-up and DPL training. The training example is given on default setting: GTA5->Cityscapes, DeepLab-V2 with ResNet-101.
 
 ### Quick start for DPL training
 
- Downlad pretrained ![1](http://latex.codecogs.com/svg.latex?M_{S}^{(0)}) and ![1](http://latex.codecogs.com/svg.latex?M_{T}^{(0)}) [[Google_Drive](https://drive.google.com/file/d/1NLKn8XwVsfC6JrgWficGBjTKRThAhULW/view?usp=sharing), [BaiduYun]()], save ![1](http://latex.codecogs.com/svg.latex?M_{S}^{(0)}) to `path_to_model_S`, save ![1](http://latex.codecogs.com/svg.latex?M_{T}^{(0)}) to `path_to_model_T`, then you can train DPL as following:
+ Downlad pretrained ![1](http://latex.codecogs.com/svg.latex?M_{S}^{(0)}) and ![1](http://latex.codecogs.com/svg.latex?M_{T}^{(0)}) [[Google_Drive](https://drive.google.com/file/d/1NLKn8XwVsfC6JrgWficGBjTKRThAhULW/view?usp=sharing), [BaiduYun](https://pan.baidu.com/s/1JIiYxp75LMGF_fHNG8xttQ)(Code: 3ndm)], save ![1](http://latex.codecogs.com/svg.latex?M_{S}^{(0)}) to `path_to_model_S`, save ![1](http://latex.codecogs.com/svg.latex?M_{T}^{(0)}) to `path_to_model_T`, then you can train DPL as following:
 
 1. Train dual path image generation module.
 
@@ -123,7 +123,7 @@ If you want to train DPL from the very begining, training example of single path
     <b>Single Path Warm-up</b>
 </summary>
 
-Download ![1](http://latex.codecogs.com/svg.latex?M_{S}^{(0)}) trained with labeled source dataset Source_only [[Google_Drive](https://drive.google.com/file/d/1tYldAGj1_JsgoPi1b09ZRYqGFdbHCSvU/view?usp=sharing), [BaiduYun]()].
+Download ![1](http://latex.codecogs.com/svg.latex?M_{S}^{(0)}) trained with labeled source dataset Source_only [[Google_Drive](https://drive.google.com/file/d/1tYldAGj1_JsgoPi1b09ZRYqGFdbHCSvU/view?usp=sharing), [BaiduYun](https://pan.baidu.com/s/1T2a-BX1E6NoEKa3uh3QP4w)(Code:fjdw)].
 
 1.  Train original cycleGAN (without Dual Path Image Translation).
     ```
