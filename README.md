@@ -1,14 +1,8 @@
 # Dual Path Learning for Domain Adaptation of Semantic Segmentation
 A [PyTorch](http://pytorch.org/) implementation of DPL.
 
-To appear at ICCV 2021. [arXiv preprint]()
+To appear at ICCV 2021. [arXiv preprint](https://arxiv.org/pdf/2108.06337.pdf)
 
-<!--
-
-If you use this code in your research please consider citing
->@article{Citing
-} 
--->
 ## Requirements
 
 - Pytorch 3.6
@@ -165,6 +159,22 @@ Download ![1](http://latex.codecogs.com/svg.latex?M_{S}^{(0)}) trained with labe
 ## More Experiments
 - For SYNTHIA to Cityscapes scenario, please train DPL with "--source synthia" and change the data path.
 - For training on "FCN-8s with VGG16", please train DPL with "--model VGG". 
+
+## Citation
+
+If you find our paper and code useful in your research, please consider giving a star and citation. 
+
+Will update when it is officially published on ICCV.
+```
+@misc{cheng2021dual,
+    title={Dual Path Learning for Domain Adaptation of Semantic Segmentation},
+    author={Yiting Cheng and Fangyun Wei and Jianmin Bao and Dong Chen and Fang Wen and Wenqiang Zhang},
+    year={2021},
+    eprint={2108.06337},
+    archivePrefix={arXiv},
+    primaryClass={cs.CV}
+}
+```
 
 ## Acknowledgment
 This code is heavily borrowed from [BDL](https://github.com/liyunsheng13/BDL).
