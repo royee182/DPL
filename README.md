@@ -1,7 +1,7 @@
 # Dual Path Learning for Domain Adaptation of Semantic Segmentation
-A [PyTorch](http://pytorch.org/) implementation of DPL.
+Official [PyTorch](http://pytorch.org/) implementation of "Dual Path Learning for Domain Adaptation of Semantic Segmentation".
 
-To appear at ICCV 2021. [arXiv preprint](https://arxiv.org/pdf/2108.06337.pdf)
+Accepted by ICCV 2021. [Paper](https://arxiv.org/pdf/2108.06337.pdf)
 
 ## Requirements
 
@@ -164,15 +164,13 @@ Download ![1](http://latex.codecogs.com/svg.latex?M_{S}^{(0)}) trained with labe
 
 If you find our paper and code useful in your research, please consider giving a star and citation. 
 
-Will update when it is officially published on ICCV.
 ```
-@misc{cheng2021dual,
-    title={Dual Path Learning for Domain Adaptation of Semantic Segmentation},
-    author={Yiting Cheng and Fangyun Wei and Jianmin Bao and Dong Chen and Fang Wen and Wenqiang Zhang},
-    year={2021},
-    eprint={2108.06337},
-    archivePrefix={arXiv},
-    primaryClass={cs.CV}
+@inproceedings{cheng2021dual,
+  title={Dual Path Learning for Domain Adaptation of Semantic Segmentation},
+  author={Cheng, Yiting and Wei, Fangyun and Bao, Jianmin and Chen, Dong and Wen, Fang and Zhang, Wenqiang},
+  booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision},
+  pages={9082--9091},
+  year={2021}
 }
 ```
 
