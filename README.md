@@ -1,4 +1,5 @@
 # Dual Path Learning for Domain Adaptation of Semantic Segmentation
+
 Official [PyTorch](http://pytorch.org/) implementation of "Dual Path Learning for Domain Adaptation of Semantic Segmentation".
 
 Accepted by ICCV 2021. [Paper](https://arxiv.org/pdf/2108.06337.pdf)
@@ -173,6 +174,14 @@ If you find our paper and code useful in your research, please consider giving a
   year={2021}
 }
 ```
+
+
+# ADPL: Adaptive Dual Path Learning for Domain Adaptation of Semantic Segmentation
+
+**New!** The extension of DPL, "ADPL: Adaptive Dual Path Learning for Domain Adaptation of Semantic Segmentation" is accepted by IEEE Transactions on Pattern Analysis and Machine Intelligence.
+
+The code of ADPL will come soon!
+
 
 ## Acknowledgment
 This code is heavily borrowed from [BDL](https://github.com/liyunsheng13/BDL).
