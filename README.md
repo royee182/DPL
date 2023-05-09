@@ -1,15 +1,7 @@
-# Dual Path Learning for Domain Adaptation of Semantic Segmentation
 
-Official [PyTorch](http://pytorch.org/) implementation of "Dual Path Learning for Domain Adaptation of Semantic Segmentation".
-
-Accepted by ICCV 2021. [Paper](https://arxiv.org/pdf/2108.06337.pdf)
-
-## Requirements
-
-- Pytorch 3.6
-- torch==1.5
-- torchvision==0.6
-- Pillow==7.1.2
+This repo contains the offical implementations of the conference paper DPL and its journal version ADPL:
+-  Dual Path Learning for Domain Adaptation of Semantic Segmentation [[Paper](https://arxiv.org/pdf/2108.06337.pdf)]
+-  ADPL: Adaptive Dual Path Learning for Domain Adaptation of Semantic Segmentation [[Paper](https://ieeexplore.ieee.org/abstract/document/10050808)] 
 
 ## Dataset Preparations
 For GTA5->Cityscapes scenario, download: 
@@ -23,6 +15,7 @@ The folder should be structured as:
 ```
 |DPL
 |—— DPL_master/
+|—— ADPL_master/
 |—— CycleGAN_DPL/
 |—— data/
 │   ├—— Cityscapes/  
@@ -40,10 +33,16 @@ The folder should be structured as:
 |   |   ├—— ...
 ```
 
+## Dual Path Learning for Domain Adaptation of Semantic Segmentation
 
-## Evaluation
+### Requirements
 
+- python 3.6
+- torch==1.5
+- torchvision==0.6
+- Pillow==7.1.2
 
+### Evaluation
 Download pre-trained models from Pretrained_Resnet_GTA5 [[Google_Drive](https://drive.google.com/file/d/1fSr-Ijs5vG7DuksUWBdBWUCDTbNkIhHO/view?usp=sharing), [BaiduYun](https://pan.baidu.com/s/1bWGHDqnTZ21aYdgTOSCu3g)(Code:t7t8)] and save the unzipped models in `./DPL_master/DPL_pretrained`, download translated target images from DPI2I_City2GTA_Resnet [[Google_Drive](https://drive.google.com/file/d/1rnO3OJGpW_m7GahxnqFPNbbVEFYFI_b5/view?usp=sharing), [BaiduYun](https://pan.baidu.com/s/15SVGHz-dWDboXszwBGZRxg)(Code:cf5a)] and save the unzipped images in `./DPL_master/DPI2I_images/DPI2I_City2GTA_Resnet/val`. Then you can evaluate DPL and DPL-Dual as following:
 - Evaluation of DPL
     ```
@@ -61,15 +60,14 @@ More pretrained models and translated target images on other settings can be dow
 - SYNTHIA->Cityscapes, DeepLab-V2 with ResNet-101: SYN_Resnet_chpt [[Google_Drive](https://drive.google.com/file/d/1YMkUAQSAZyUHP1J8jpN12pMShHByP6bk/view?usp=sharing), [BaiduYun](https://pan.baidu.com/s/1c48K9Ta8-ya_gchoKo1tVw)(Code:drvo)]
 - SYNTHIA->Cityscapes, FCN-8s with VGG16: SYN_VGG_chpt [[Google_Drive](https://drive.google.com/file/d/1_f4bCMdbVzIXqFSjV7sT_hiPQHGY-Kgx/view?usp=sharing), [BaiduYun](https://pan.baidu.com/s/1MR9FhbsX6VEf2BMOp_khFQ)(Code:9vio)]
 
-## Training
+### Training
 The training process of DPL consists of two phases: single-path warm-up and DPL training. The training example is given on default setting: GTA5->Cityscapes, DeepLab-V2 with ResNet-101.
 
-### Quick start for DPL training
+#### Quick start for DPL training
 
  Downlad pretrained ![1](http://latex.codecogs.com/svg.latex?M_{S}^{(0)}) and ![1](http://latex.codecogs.com/svg.latex?M_{T}^{(0)}) [[Google_Drive](https://drive.google.com/file/d/1NLKn8XwVsfC6JrgWficGBjTKRThAhULW/view?usp=sharing), [BaiduYun](https://pan.baidu.com/s/1JIiYxp75LMGF_fHNG8xttQ)(Code: 3ndm)], save ![1](http://latex.codecogs.com/svg.latex?M_{S}^{(0)}) to `path_to_model_S`, save ![1](http://latex.codecogs.com/svg.latex?M_{T}^{(0)}) to `path_to_model_T`, then you can train DPL as following:
 
 1. Train dual path image generation module.
-
     ```
     cd ../CycleGAN_DPL
     python train.py --dataroot ../data --name dual_path_I2I --A_setroot GTA5/images --B_setroot Cityscapes/leftImg8bit/train --model cycle_diff --lambda_semantic 1 --init_weights_S path_to_model_S --init_weights_T path_to_model_T
@@ -105,9 +103,6 @@ The training process of DPL consists of two phases: single-path warm-up and DPL 
     ```
     python DPL.py --snapshot-dir snapshots/DPL_modelT_step_i --data-dir DPI2I_path_to_GTA52cityscapes --data-label-folder-target path_to_dual_pseudo_label_stepi --init-weights path_to_model_T
     ```
-
-
-
 
     3.3. Update `path_to_model_S`with path to best ![1](http://latex.codecogs.com/svg.latex?M_{S}) model, update `path_to_model_T`with path to best ![1](http://latex.codecogs.com/svg.latex?M_{T}) model, adjust parameter `threshenlen` to 0.25, then repeat 3.1-3.2 for 3 more rounds.
 
@@ -157,9 +152,52 @@ Download ![1](http://latex.codecogs.com/svg.latex?M_{S}^{(0)}) trained with labe
 </details>
 
 
-## More Experiments
+### More Experiments
 - For SYNTHIA to Cityscapes scenario, please train DPL with "--source synthia" and change the data path.
 - For training on "FCN-8s with VGG16", please train DPL with "--model VGG". 
+
+
+
+## ADPL: Adaptive Dual Path Learning for Domain Adaptation of Semantic Segmentation
+
+###  Requirements
+Please install packages by:
+```
+conda create --name ADPL_env python=3.6
+conda activate ADPL_env
+pip install -r requirements.txt
+```
+
+### Evaluation
+Download pre-trained models from [Google_Drive](https://drive.google.com/file/d/1qg86mo7pLPizVzWhgsKbGpIjymsggA5-/view?usp=share_link) or [BaiduYun](https://pan.baidu.com/s/1oe0L4rdjGq1K1Zzm3L49lw)(Code:4r6k), and save the unzipped models in `./ADPL_master/ADPL_pretrained/Deep_GTA5`, download translated target images from DPI2I_City2GTA_Resnet [[Google_Drive](https://drive.google.com/file/d/1rnO3OJGpW_m7GahxnqFPNbbVEFYFI_b5/view?usp=sharing) or [BaiduYun](https://pan.baidu.com/s/15SVGHz-dWDboXszwBGZRxg)(Code:cf5a)] and save the unzipped images in `../data/Deep_GTA/target/val`. Then you can evaluate ADPL and ADPL-Dual as following:
+- Evaluation of ADPL
+    ```
+    cd ADPL_master
+    python evaluation.py 
+    ```
+- Evaluation of ADPL-Dual
+    ```
+    python evaluation_ADPL.py
+    ``` 
+
+More pretrained models and translated target images on other settings can be downloaded from [Google_Drive](https://drive.google.com/drive/folders/1S0G5J7YoLrOZvVwQPGvawiAVJTroBFeA?usp=share_link) or [BaiduYun](https://pan.baidu.com/s/1ytJNzhSyHYp5DRNg5Sn4tg)(Code:nn4a).
+when evaluating VGG models, please add command option `--model_name VGG`
+when the source is synhtia, please add command option `--source_dataset_name synthia`
+
+
+
+### Training
+The training process of ADPL consists of two phases: single-path warm-up and ADPL training. Since ADPL and DPL share the identical warm up stage, we only supplement the ADPL training instrucions in this section, please refer to "Single path warm up" for warm up training. The training example is given on default setting: GTA5->Cityscapes, DeepLab-V2 with ResNet-101.
+
+ ADPL training consists of two parts: dual path image translation (DPIT) module training and dual path adaptive segmentation (DPAS) module training. The training process of DPIT is shared by ADPL and DPL, so please refer to the first two steps in "Quick start for DPL training" to train DPIT and generate translated images. To train the DPAS, please update the translated images paths in `ADPL/data/__init__.py` following the corresponding comment, place ![1](http://latex.codecogs.com/svg.latex?M_{S}^{(0)}) and ![1](http://latex.codecogs.com/svg.latex?M_{T}^{(0)}) in `./ADPL/chpt/Deep_GTA/st1`, then run the following commands to finish the 1-stage training:
+ ```
+    cd ADPL_master
+    python train.py --config ./configs/configUDA_gta_deep_st1.json
+```
+For the 2-stage training, please place the best ![1](http://latex.codecogs.com/svg.latex?M_{S}) model and  best ![1](http://latex.codecogs.com/svg.latex?M_{T}) model of stage 1 in `./ADPL/chpt/Deep_GTA/st2`, then the 2nd stage can be trained by:
+ ```
+    python train.py --config ./configs/configUDA_gta_deep_st2.json --reweight_thresh 0
+```
 
 ## Citation
 
@@ -173,15 +211,12 @@ If you find our paper and code useful in your research, please consider giving a
   pages={9082--9091},
   year={2021}
 }
+
+@ARTICLE{cheng2023ADPL,
+  author={Cheng, Yiting and Wei, Fangyun and Bao, Jianmin and Chen, Dong and Zhang, Wenqiang},
+  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence}, 
+  title={ADPL: Adaptive Dual Path Learning for Domain Adaptation of Semantic Segmentation}, 
+  year={2023},
+  pages={1-17},
+  doi={10.1109/TPAMI.2023.3248294}}
 ```
-
-
-# ADPL: Adaptive Dual Path Learning for Domain Adaptation of Semantic Segmentation
-
-**New!** The extension of DPL, "ADPL: Adaptive Dual Path Learning for Domain Adaptation of Semantic Segmentation" is accepted by IEEE Transactions on Pattern Analysis and Machine Intelligence.
-
-The code of ADPL will come soon!
-
-
-## Acknowledgment
-This code is heavily borrowed from [BDL](https://github.com/liyunsheng13/BDL).
